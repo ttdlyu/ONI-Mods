@@ -14,9 +14,12 @@ namespace PackAnything.Movable.Stories {
 
     public static void PatchBuildings(Harmony harmony) {
       var targetMethod_1 = typeof(FossilDigSiteConfig).GetMethod("DoPostConfigureComplete");
-      
+      var targetMethod_2 = typeof(HijackedHeadquartersConfig).GetMethod("DoPostConfigureComplete");
+      var targetMethod_3 = typeof(GravitasBathroomStallConfig).GetMethod("DoPostConfigureComplete");
       var postfix = AccessTools.Method(typeof(StoryMovable), nameof(CommonPostfix)); 
       harmony.Patch(targetMethod_1, postfix: new HarmonyMethod(postfix));
+      harmony.Patch(targetMethod_2, postfix: new HarmonyMethod(postfix));
+      harmony.Patch(targetMethod_3, postfix: new HarmonyMethod(postfix));
     }
 
     public static void CommonPostfix(GameObject go) {

@@ -5,14 +5,6 @@ using UnityEngine;
 
 namespace PackAnything {
   public class PackAnythingPatches {
-    [HarmonyPatch(typeof(GeneratedBuildings), "LoadGeneratedBuildings")]
-    public class GeneratedBuildings_LoadGeneratedBuildings_Patch {
-      public static void Prefix() {
-        LocString.CreateLocStringKeys(typeof(ModString.Options));
-        LocString.CreateLocStringKeys(typeof(ModString.INFO), "STRINGS.CAL.MOD.");
-      }
-    }
-
     // 添加工具栏工具
     [HarmonyPatch(typeof(PlayerController), "OnPrefabInit")]
     public static class PlayerController_OnPrefabInit_Patch {
